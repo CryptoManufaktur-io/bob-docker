@@ -17,4 +17,4 @@ If you don't have Docker CE yet, `./bobd install` can install it
 
 BoB Docker uses a "semver" scheme.
 
-This is BoB Docker v0.0.1
+This is BoB Docker v0.0.2
