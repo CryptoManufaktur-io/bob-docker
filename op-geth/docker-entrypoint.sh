@@ -43,6 +43,8 @@ else
     echo "geth datadir already initialized, skipping..."
 fi
 
+__public_ip="--nat extip:$(wget -qO- https://ifconfig.me/ip)"
+
 # Word splitting is desired for the command line parameters
 # shellcheck disable=SC2086
-exec "$@" ${__verbosity} ${OPGETH_EXTRAS}
+exec "$@" ${__verbosity} ${__public_ip} ${OPGETH_EXTRAS}
