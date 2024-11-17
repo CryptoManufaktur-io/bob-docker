@@ -75,6 +75,26 @@ __env_migrate() {
 }
 
 
+__warn_l1() {
+  var="L1_RPC"
+  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${ENV_FILE}" || true)
+# Literal match intended
+# shellcheck disable=SC2076
+  if [[ "${value}" =~ "example.com" ]]; then
+    echo "Warning: Your L1 RPC (EL) is not set to a valid value. Syncing will fail."
+    echo
+  fi
+  var="L1_BEACON"
+  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${ENV_FILE}" || true)
+# Literal match intended
+# shellcheck disable=SC2076
+  if [[ "${value}" =~ "example.com" ]]; then
+    echo "Warning: Your L1 Beacon (CL) is not set to a valid value. Syncing will fail."
+    echo
+  fi
+}
+
+
 __dodocker() {
   $__docker_sudo $__docker_exe "$@"
 }
@@ -696,6 +716,7 @@ find the original contents in ${__env_file}.bak."
     echo "${__project_name} version is pinned to ${ETHDPINNED} in \".env\"."
     echo "Please make sure to run compatible client versions."
   fi
+  __warn_l1
   __during_update=0
 }
 
