@@ -77,7 +77,7 @@ __env_migrate() {
 
 __warn_l1() {
   var="L1_RPC"
-  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${ENV_FILE}" || true)
+  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${__env_file}" || true)
 # Literal match intended
 # shellcheck disable=SC2076
   if [[ "${value}" =~ "example.com" ]]; then
@@ -85,7 +85,7 @@ __warn_l1() {
     echo
   fi
   var="L1_BEACON"
-  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${ENV_FILE}" || true)
+  value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" "${__env_file}" || true)
 # Literal match intended
 # shellcheck disable=SC2076
   if [[ "${value}" =~ "example.com" ]]; then
