@@ -1,3 +1,7 @@
+# Archived repo
+
+Please use [Optimism Docker](https://github.com/CryptoManufaktur-io/optimism-docker) for BoB RPC nodes
+
 # BoB Docker
 
 Docker compose for BoB
